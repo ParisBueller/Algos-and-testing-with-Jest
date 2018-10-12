@@ -38,7 +38,7 @@
 //     return charMap;
 // }
 
-//Solution #2
+//Solution #2 *
 const anagrams = (stringA, stringB) => {
     //compare stringA and stringB using our helper function below
     return cleanString(stringA) === cleanString(stringB);
