@@ -9,20 +9,31 @@
 //   fib(4) === 3
 
 //iterative solution
+// function fib(n) {
+//     //for 0 and 1, there are no previous two entries to add
+//     //so we set result to an array of 0 and 1
+//     const result = [0, 1];
+//     //since our result is an array of [0, 1], we start our iteration at 2
+//     for(let i = 2; i <=n; i++) {
+//         //pull out the previous  two records (a, b)
+//         const a = result[i - 1];
+//         const b = result[i - 2];
+//         //add those previous two results
+//         result.push(a + b);
+//     }
+//     //return result at n
+//     return result[n];
+// }
+
+//recursive solution
+//we keep calling fib with smaller and smaller numbers until
+//eventually we meet our base case( n < 2) and start returning actual value
 function fib(n) {
-    //for 0 and 1, there are no previous two entries to add
-    //so we set result to an array of 0 and 1
-    const result = [0, 1];
-    //since our result is an array of [0, 1], we start our iteration at 2
-    for(let i = 2; i <=n; i++) {
-        //pull out the previous  two records (a, b)
-        const a = result[i - 1];
-        const b = result[i - 2];
-        //add those previous two results
-        result.push(a + b);
+    if (n < 2) {
+        return n;
     }
-    //return result at n
-    return result[n];
+
+    return fib(n - 1) + fib(n - 2);
 }
 
 module.exports = fib;
