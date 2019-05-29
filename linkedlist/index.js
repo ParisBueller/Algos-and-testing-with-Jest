@@ -14,6 +14,7 @@ class LinkedList {
         this.head = null;
     }
 
+    //insert a new node at the front of the linked list
     insertFirst(data) {
         //create a new node and assign it to the head property,
         //to make sure we do not overwrite any existing node
@@ -21,6 +22,7 @@ class LinkedList {
         this.head = new Node(data, this.head);     
     }
 
+    //get the size of a linked list
     size() {
         let counter = 0;
         //get a referennce to our first node in the LinkedList
@@ -36,6 +38,35 @@ class LinkedList {
         
         return counter;
     }
+
+    //return the first node in a linked list
+    getFirst() {
+        return this.head;
+    }
+
+    //return the last node in a linked list
+    getLast() {
+        //if no nodes in linked list, return null right away
+        if(!this.head) {
+            return null;
+        }
+        //while a node exists, update the node to the next node in our chain
+        let node = this.head;
+        while (node) {
+            //if no node exists, return  the current node as it is the last 
+            if (!node.next) {
+                return node;
+            }
+            node = node.next;
+        }
+    }
+
+    //clear the linked list
+    clear() {
+        this.head = null;
+    }
+
+
 }
 
 module.exports = { Node, LinkedList };
