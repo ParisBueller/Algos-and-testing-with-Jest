@@ -66,6 +66,46 @@ class LinkedList {
         this.head = null;
     }
 
+    //remove only the first node in a linked list
+    removeFirst() {
+        //if nothing is assigned to head node
+        //linked list must be empty, return
+        if (!this.head) {
+            return;
+        }
+        //reassign the head node to the next node
+        //in the linked list
+        this.head = this.head.next;
+
+    }
+
+    //remove the last node in a linked list
+    removeLast() {
+        //if nothing is assigned to head node
+        //linked list must be empty, return
+        if (!this.head) {
+            return;
+        }
+        //if no node after head node
+        //assign the head to eqaul null
+        if(!this.head.next) {
+            this.head = null;
+            return;
+        }
+
+        let previous = this.head;
+        let node = this.head.next;
+        //while node.next exists(i.e. !null)
+        while(node.next) {
+            //reassign previous to node
+            //reassign node to node.next
+            previous = node;
+            node = node.next;
+        }
+        //once node.next = null, assign the previous nodes
+        //next property to be null
+        previous.next = null;
+    }
 
 }
 
