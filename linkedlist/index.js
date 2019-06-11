@@ -107,6 +107,41 @@ class LinkedList {
         previous.next = null;
     }
 
+    //insert a new node at the end of the linked list
+    insertLast(data) {
+        //find the last node in the linked list by invoking
+        //previously authored getLast method(see above)
+        const last = this.getLast();
+
+        if(last) {
+            //there are some existing nodes in our chain
+            last.next = new Node(data);
+        } else {
+            //our chain is empty!
+            this.head = new Node(data);
+        }
+    }
+
+    //find a node at a given index
+    getAt(index) {  
+        let counter = 0;
+        let node = this.head;
+        while (node) {
+            //if the counter is equal to given index
+            if (counter === index) {
+                //return the node as we've found
+                //what we're looking for
+                return node;
+            }
+            //increment our counter
+            counter++;
+            //move our node to the next node in the chain
+            node = node.next;
+        }
+        //if index not found, return null
+        return null;
+    }
+
 }
 
 module.exports = { Node, LinkedList };
