@@ -141,6 +141,30 @@ class LinkedList {
         //if index not found, return null
         return null;
     }
+    
+    //remove a node at a given index
+    removeAt(index) {
+        //if list is empty, return
+        if(!this.head) {
+            return;
+        }
+        //if trying to remove node at index 0, reassign head
+        if(index === 0) {
+            this.head = this.head.next;
+            return;
+        }
+        //get the node previous to the index 
+        const previous = this.getAt(index - 1);
+        //if previous doesn't exist, or the if that
+        //node is the last in the list, return
+        if(!previous || !previous.next) {
+            return;
+        }
+        //remove the node @ index by reassigning 
+        //previous.next to previous.next.next
+        previous.next = previous.next.next;
+ 
+    }
 
 }
 
