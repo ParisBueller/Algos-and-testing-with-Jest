@@ -166,6 +166,44 @@ class LinkedList {
  
     }
 
+    //insert a node at a given index
+    insertAt(data,index) {
+        //if list is empty, insert a new Node
+        if(!this.head) {
+            this.head = new Node(data);
+            return;
+        }
+        //if trying to insert node at index 0, reassign head and insert
+        if (index === 0) {
+            this.head = new Node(data, this.head);
+            return;
+        }
+        //get the node previous to our index
+        const previous = this.getAt(index - 1) || this.getLast();
+        //create a new node at the passed index by calling previous.next
+        const node = new Node(data, previous.next);
+        //reassign link between inserted node and and the one previous
+        previous.next = node;
+    }
+
+    //iterate through each node in a linked list
+    //paramater passed is function to be called on each node
+    forEach(fn) {
+        //assign node to head
+        let node = this.head;
+        //assign couner for iterator
+        let counter = 0;
+        //while a node exists
+        while (node) {
+            //call our passed function(fn)
+            fn(node, counter);
+            //crawl through the nodes by calling node.next
+            node = node.next;
+            //increment counter by 1
+            counter++;
+        }
+    } 
+
 }
 
 module.exports = { Node, LinkedList };
