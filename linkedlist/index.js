@@ -202,7 +202,16 @@ class LinkedList {
             //increment counter by 1
             counter++;
         }
-    } 
+    }
+    //this defines our generator function
+    //with a key of Symbol.iterator
+    *[Symbol.iterator]() {
+        let node = this.head;
+        while (node) {
+            yield node;
+            node = node.next;
+        }
+    }
 
 }
 
